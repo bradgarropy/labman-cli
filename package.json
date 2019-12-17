@@ -1,11 +1,19 @@
 {
     "name": "labman",
     "version": "0.0.1",
-    "description": "<description>",
-    "keywords": [],
-    "homepage": "<url>",
+    "description": "👨🏼‍🔬 github label manager cli",
+    "keywords": [
+        "github",
+        "issues",
+        "labels",
+        "octokit",
+        "javascript",
+        "nodejs",
+        "cli"
+    ],
+    "homepage": "https://labman.netlify.com",
     "bugs": {
-        "url": "https://github.com/bradgarropy/<repo>/issues"
+        "url": "https://github.com/bradgarropy/labman-cli/issues"
     },
     "license": "MIT",
     "author": {
@@ -15,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bradgarropy/<repo>"
+        "url": "https://github.com/bradgarropy/labman-cli"
     },
     "scripts": {
         "start": "node src/index.js"
