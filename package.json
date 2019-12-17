@@ -1,0 +1,37 @@
+{
+    "name": "labman",
+    "version": "0.0.1",
+    "description": "<description>",
+    "keywords": [],
+    "homepage": "<url>",
+    "bugs": {
+        "url": "https://github.com/bradgarropy/<repo>/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Brad Garropy",
+        "email": "bradgarropy@gmail.com",
+        "url": "https://bradgarropy.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bradgarropy/<repo>"
+    },
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "dependencies": {
+        "@octokit/rest": "^16.35.2",
+        "dotenv": "^8.2.0"
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.0.3",
+        "eslint": "^6.7.2",
+        "eslint-config-bradgarropy": "^1.2.0",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-hooks": "^2.3.0",
+        "prettier": "^1.19.1"
+    },
+    "peerDependencies": {}
+}
