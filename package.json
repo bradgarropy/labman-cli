@@ -26,11 +26,12 @@
         "url": "https://github.com/bradgarropy/labman-cli"
     },
     "scripts": {
-        "start": "node src/index.js"
+        "start": "node src/cli.js"
     },
     "dependencies": {
         "@octokit/rest": "^16.35.2",
-        "dotenv": "^8.2.0"
+        "dotenv": "^8.2.0",
+        "yargs": "^15.0.2"
     },
     "devDependencies": {
         "babel-eslint": "^10.0.3",

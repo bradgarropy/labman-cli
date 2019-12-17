@@ -13,4 +13,6 @@ const cloneLabels = async (source, destination) => {
     await createLabels(newLabels, "bradgarropy", destination)
 }
 
-cloneLabels("adobe-lunch", "labman")
+module.exports = {
+    cloneLabels,
+}
