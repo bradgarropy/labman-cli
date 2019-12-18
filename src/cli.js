@@ -5,14 +5,14 @@ const {cloneLabels} = require("./clone")
 
 const args = yargs
     .command(
-        "clone <source> <destination>",
+        "clone <token> <source> <destination>",
         "Clone issue labels from one repo to another.",
     )
     .help()
     .alias("help", "h")
     .alias("version", "v").argv
 
-const {source, destination} = args
-console.log(source, destination)
+const {token, source, destination} = args
+console.log(token, source, destination)
 
 cloneLabels(source, destination)
