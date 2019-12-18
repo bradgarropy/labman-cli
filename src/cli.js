@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const yargs = require("yargs")
 const {cloneLabels} = require("./clone")
 
