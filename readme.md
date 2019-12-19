@@ -1,5 +1,11 @@
 # 👨🏼‍🔬 github label manager cli
 
+<a href="https://www.npmjs.com/package/labman">
+    <img alt="npm" src="https://img.shields.io/npm/v/labman.svg?color=FB3B49&style=flat-square">
+</a>
+
+_Command line tool for managing issue labels across GitHub repositories._
+
 ## 📦 Installation
 
 Installation is optional, as you can run this package with [`npx`][npx].
