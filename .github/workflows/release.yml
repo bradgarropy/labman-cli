@@ -5,7 +5,8 @@ on:
         types: [published]
 
 jobs:
-    build:
+    release:
+        name: "🚀 release"
         runs-on: ubuntu-latest
         steps:
             - name: "📚 checkout"
