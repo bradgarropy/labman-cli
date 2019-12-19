@@ -12,8 +12,7 @@ jobs:
             - name: "📚 checkout"
               uses: actions/checkout@master
             - name: "📦 publish"
-              uses: actions/npm@master
-              with:
-                  args: publish
+              uses: actions/setup-node@master
+            - run: npm publish
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
