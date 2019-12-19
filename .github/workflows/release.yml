@@ -10,7 +10,8 @@ jobs:
         steps:
             - name: "📚 checkout"
               uses: actions/checkout@v1
-            - uses: actions/setup-node@v1
+            - name: "📦 publish"
+              uses: actions/setup-node@v1
               with:
                   node-version: 12
                   registry-url: https://registry.npmjs.org/
