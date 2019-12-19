@@ -1,6 +1,6 @@
 {
     "name": "labman",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "👨🏼‍🔬 github label manager cli",
     "keywords": [
         "github",
