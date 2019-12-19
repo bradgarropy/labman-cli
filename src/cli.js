@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs")
-const {cloneLabels} = require("./clone")
+const clone = require("./clone")
+const {createOctokit} = require("./octokit")
 
 const args = yargs
     .command(
@@ -13,6 +14,6 @@ const args = yargs
     .alias("version", "v").argv
 
 const {token, source, destination} = args
-console.log(token, source, destination)
 
-cloneLabels(source, destination)
+createOctokit(token)
+clone(source, destination)

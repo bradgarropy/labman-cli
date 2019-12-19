@@ -33,7 +33,6 @@
     },
     "dependencies": {
         "@octokit/rest": "^16.35.2",
-        "dotenv": "^8.2.0",
         "yargs": "^15.0.2"
     },
     "devDependencies": {

@@ -1,9 +1,16 @@
-const dotenv = require("dotenv")
 const Octokit = require("@octokit/rest")
 
-dotenv.config()
+let octokit
 
-const options = {auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN}
-const octokit = new Octokit(options)
+const createOctokit = token => {
+    const options = {auth: token}
+    octokit = new Octokit(options)
+    return octokit
+}
 
-module.exports = octokit
+const getOctokit = () => octokit
+
+module.exports = {
+    getOctokit,
+    createOctokit,
+}
