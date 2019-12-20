@@ -1,19 +1,23 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs")
-const clone = require("./clone")
-const {createOctokit} = require("./octokit")
+const {name} = require("../package.json")
+const {loginHandler, cloneHandler} = require("./handlers")
 
-const args = yargs
+yargs
+    .scriptName(name)
+    .command(
+        "login <username> <token>",
+        "Persist GitHub login credentials.",
+        {},
+        loginHandler,
+    )
     .command(
         "clone <token> <source> <destination>",
         "Clone issue labels from one repo to another.",
+        {},
+        cloneHandler,
     )
     .help()
     .alias("help", "h")
     .alias("version", "v").argv
-
-const {token, source, destination} = args
-
-createOctokit(token)
-clone(source, destination)

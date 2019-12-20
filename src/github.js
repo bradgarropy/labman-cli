@@ -22,12 +22,12 @@ const getLabels = async (owner, repo) => {
 }
 
 const deleteLabels = async (labels, owner, repo) => {
-    console.log("\nDeleting")
+    console.log(`\nDeleting labels from ${owner}/${repo}`)
 
     const octokit = getOctokit()
 
     labels.forEach(label => {
-        console.log(label.name)
+        console.log(` - ${label.name}`)
 
         const parameters = {
             owner,
@@ -40,12 +40,12 @@ const deleteLabels = async (labels, owner, repo) => {
 }
 
 const createLabels = async (labels, owner, repo) => {
-    console.log("\nCreating")
+    console.log(`\nCreating labels in ${owner}/${repo}`)
 
     const octokit = getOctokit()
 
     labels.forEach(label => {
-        console.log(label.name)
+        console.log(` - ${label.name}`)
 
         const parameters = {
             owner,
