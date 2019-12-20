@@ -2,18 +2,19 @@
 
 const yargs = require("yargs")
 const {name} = require("../package.json")
-const {loginHandler, cloneHandler} = require("./handlers")
+const {loginHandler, logoutHandler, cloneHandler} = require("./handlers")
 
 yargs
     .scriptName(name)
     .command(
         "login <username> <token>",
-        "Persist GitHub login credentials.",
+        "Persist GitHub credentials.",
         {},
         loginHandler,
     )
+    .command("logout", "Remove GitHub credentials.", {}, logoutHandler)
     .command(
-        "clone <token> <source> <destination>",
+        "clone <source> <destination>",
         "Clone issue labels from one repo to another.",
         {},
         cloneHandler,
