@@ -32,7 +32,10 @@
         "start": "node src/cli.js"
     },
     "dependencies": {
+        "@octokit/oauth-login-url": "^2.1.2",
         "@octokit/rest": "^16.35.2",
+        "axios": "^0.19.0",
+        "express": "^4.17.1",
         "yargs": "^15.0.2"
     },
     "devDependencies": {
