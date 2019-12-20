@@ -1,10 +1,21 @@
+const conf = require("conf")
 const clone = require("./clone")
 const {createOctokit} = require("./octokit")
 
-const loginHandler = argv => {
+const config = new conf()
+
+const loginHandler = async argv => {
     const {username, token} = argv
-    console.log("loginHandler")
-    console.log(username, token)
+
+    const octokit = createOctokit(token)
+
+    try {
+        await octokit.users.getAuthenticated()
+        config.set({username, token})
+        console.log("Login successful!")
+    } catch (error) {
+        console.log("Login failed! Please try again.")
+    }
 }
 
 const cloneHandler = argv => {
