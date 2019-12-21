@@ -19,7 +19,8 @@ npm install labman --global
 If you have `labman` installed globally you can run it as shown below.
 
 ```
-labman clone <token> <source> <destination>
+labman login <username> <token>
+labman clone <source> <destination>
 ```
 
 Where `token` is your GitHub [personal access token][token].  
@@ -28,13 +29,15 @@ Where `source` and `destination` are GitHub repositories in the form of `owner/r
 Here is an example.
 
 ```
-labman clone 1234abcd bradgarropy/label-source bradgarropy/label-destination
+labman login bradgarropy 1234abcd
+labman clone bradgarropy/label-source bradgarropy/label-destination
 ```
 
 Alternatively, you can run it with [`npx`][npx].
 
 ```
-npx labman clone <token> <source> <destination>
+npx labman login <username> <token>
+npx labman clone <source> <destination>
 ```
 
 ## ❔ Questions
