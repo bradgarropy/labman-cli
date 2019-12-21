@@ -1,7 +1,6 @@
 const {getLabels, deleteLabels, createLabels} = require("./github")
 
 const clone = async (source, destination) => {
-    console.log(source, "->", destination)
     const [sourceOwner, sourceRepo] = source.split("/")
     const [destinationOwner, destinationRepo] = destination.split("/")
 
