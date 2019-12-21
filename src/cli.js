@@ -9,7 +9,14 @@ yargs
     .command(
         "login <username> <token>",
         "Persist GitHub credentials.",
-        {},
+        {
+            force: {
+                alias: "f",
+                type: "boolean",
+                default: false,
+                description: "Force login",
+            },
+        },
         loginHandler,
     )
     .command("logout", "Remove GitHub credentials.", {}, logoutHandler)
