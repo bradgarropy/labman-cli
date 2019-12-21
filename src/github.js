@@ -1,4 +1,4 @@
-const {getOctokit} = require("./octokit")
+const {createOctokit, getOctokit} = require("./octokit")
 
 const getRateLimit = async () => {
     const octokit = getOctokit()
@@ -6,6 +6,18 @@ const getRateLimit = async () => {
     const {limit, remaining} = response.data.resources.core
 
     console.log(`${remaining}/${limit} remaining`)
+}
+
+const validToken = async token => {
+    const octokit = createOctokit(token)
+
+    try {
+        await octokit.users.getAuthenticated()
+    } catch (error) {
+        return false
+    }
+
+    return true
 }
 
 const getLabels = async (owner, repo) => {
@@ -61,6 +73,7 @@ const createLabels = async (labels, owner, repo) => {
 
 module.exports = {
     getRateLimit,
+    validToken,
     getLabels,
     deleteLabels,
     createLabels,

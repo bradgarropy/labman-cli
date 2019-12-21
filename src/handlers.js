@@ -1,5 +1,6 @@
 const conf = require("conf")
 const clone = require("./clone")
+const {validToken} = require("./github")
 const {createOctokit} = require("./octokit")
 
 const config = new conf()
@@ -13,15 +14,17 @@ const loginHandler = async argv => {
         return
     }
 
-    const octokit = createOctokit(token)
+    const valid = await validToken(token)
 
-    try {
-        await octokit.users.getAuthenticated()
-        config.set({username, token})
-        console.log("Login successful!")
-    } catch (error) {
+    if (!valid) {
         console.log("Login failed! Please try again.")
+        return
     }
+
+    config.set({username, token})
+    console.log("Login successful!")
+
+    return
 }
 
 const logoutHandler = () => {
