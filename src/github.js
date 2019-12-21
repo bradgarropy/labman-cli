@@ -1,12 +1,5 @@
+const chalk = require("chalk")
 const {createOctokit, getOctokit} = require("./octokit")
-
-const getRateLimit = async () => {
-    const octokit = getOctokit()
-    const response = await octokit.rateLimit.get()
-    const {limit, remaining} = response.data.resources.core
-
-    console.log(`${remaining}/${limit} remaining`)
-}
 
 const validToken = async token => {
     const octokit = createOctokit(token)
@@ -34,12 +27,14 @@ const getLabels = async (owner, repo) => {
 }
 
 const deleteLabels = async (labels, owner, repo) => {
-    console.log(`\nDeleting labels from ${owner}/${repo}`)
+    console.log(
+        `\nDeleting labels from ${chalk.cyanBright(`${owner}/${repo}`)}\n`,
+    )
 
     const octokit = getOctokit()
 
     labels.forEach(label => {
-        console.log(` - ${label.name}`)
+        console.log(` ${chalk.bold.redBright("-")} ${label.name}`)
 
         const parameters = {
             owner,
@@ -52,12 +47,14 @@ const deleteLabels = async (labels, owner, repo) => {
 }
 
 const createLabels = async (labels, owner, repo) => {
-    console.log(`\nCreating labels in ${owner}/${repo}`)
+    console.log(
+        `\nCreating labels in ${chalk.cyanBright(`${owner}/${repo}`)}\n`,
+    )
 
     const octokit = getOctokit()
 
     labels.forEach(label => {
-        console.log(` - ${label.name}`)
+        console.log(` ${chalk.bold.greenBright("+")} ${label.name}`)
 
         const parameters = {
             owner,
@@ -72,7 +69,6 @@ const createLabels = async (labels, owner, repo) => {
 }
 
 module.exports = {
-    getRateLimit,
     validToken,
     getLabels,
     deleteLabels,
