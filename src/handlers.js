@@ -33,7 +33,7 @@ const logoutHandler = () => {
 }
 
 const cloneHandler = async argv => {
-    const {source, destination, labels} = argv
+    const {source, destination, labels, purge} = argv
     const token = config.get("token")
 
     if (!token) {
@@ -50,7 +50,7 @@ const cloneHandler = async argv => {
     createOctokit(token)
 
     try {
-        await clone(source, destination, labels)
+        await clone(source, destination, labels, purge)
     } catch (error) {
         console.log(
             `\n${chalk.redBright(

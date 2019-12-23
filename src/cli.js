@@ -23,7 +23,14 @@ yargs
     .command(
         "clone <source> <destination> [labels...]",
         "Clone issue labels from one repo to another.",
-        {},
+        {
+            purge: {
+                alias: "p",
+                type: "boolean",
+                default: false,
+                description: "Purge destination labels",
+            },
+        },
         cloneHandler,
     )
     .help()
