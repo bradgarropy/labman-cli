@@ -1,6 +1,6 @@
 const {getLabels, deleteLabels, createLabels} = require("./github")
 
-const clone = async (source, destination) => {
+const clone = async (source, destination, labels = []) => {
     const [sourceOwner, sourceRepo] = source.split("/")
     const [destinationOwner, destinationRepo] = destination.split("/")
 
@@ -9,7 +9,12 @@ const clone = async (source, destination) => {
     await deleteLabels(oldLabels, destinationOwner, destinationRepo)
 
     // create new labels
-    const newLabels = await getLabels(sourceOwner, sourceRepo)
+    const sourceLabels = await getLabels(sourceOwner, sourceRepo)
+
+    const newLabels = labels.length
+        ? sourceLabels.filter(label => labels.includes(label.name))
+        : sourceLabels
+
     await createLabels(newLabels, destinationOwner, destinationRepo)
 }
 

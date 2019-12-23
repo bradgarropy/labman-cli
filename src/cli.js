@@ -21,7 +21,7 @@ yargs
     )
     .command("logout", "Remove GitHub credentials.", {}, logoutHandler)
     .command(
-        "clone <source> <destination>",
+        "clone <source> <destination> [labels...]",
         "Clone issue labels from one repo to another.",
         {},
         cloneHandler,
