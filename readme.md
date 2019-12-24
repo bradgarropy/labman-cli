@@ -23,7 +23,7 @@ labman login <username> <token>
 labman <source> <destination>
 ```
 
-Where `token` is your GitHub [personal access token][token].  
+Where `token` is a GitHub [personal access token][token] with `repo` scope.  
 Where `source` and `destination` are GitHub repositories in the form of `owner/repo`.
 
 Here is an example.
