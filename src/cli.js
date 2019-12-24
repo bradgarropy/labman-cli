@@ -24,11 +24,11 @@ yargs
         "clone <source> <destination> [labels...]",
         "Clone issue labels from one repo to another.",
         {
-            purge: {
-                alias: "p",
+            clobber: {
+                alias: "c",
                 type: "boolean",
                 default: false,
-                description: "Purge destination labels",
+                description: "Clobber destination labels",
             },
         },
         cloneHandler,

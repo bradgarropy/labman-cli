@@ -1,11 +1,11 @@
 const {getLabels, deleteLabels, createLabels} = require("./github")
 
-const clone = async (source, destination, labels = [], purge = false) => {
+const clone = async (source, destination, labels = [], clobber = false) => {
     const [sourceOwner, sourceRepo] = source.split("/")
     const [destinationOwner, destinationRepo] = destination.split("/")
 
     // delete existing labels
-    if (purge) {
+    if (clobber) {
         const oldLabels = await getLabels(destinationOwner, destinationRepo)
         await deleteLabels(oldLabels, destinationOwner, destinationRepo)
     }
