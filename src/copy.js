@@ -1,6 +1,6 @@
 const {getLabels, deleteLabels, createLabels} = require("./github")
 
-const clone = async (source, destination, labels = [], clobber = false) => {
+const copy = async (source, destination, labels = [], clobber = false) => {
     const [sourceOwner, sourceRepo] = source.split("/")
     const [destinationOwner, destinationRepo] = destination.split("/")
 
@@ -20,4 +20,4 @@ const clone = async (source, destination, labels = [], clobber = false) => {
     await createLabels(newLabels, destinationOwner, destinationRepo)
 }
 
-module.exports = clone
+module.exports = copy
