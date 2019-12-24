@@ -20,24 +20,24 @@ If you have `labman` installed globally you can run it as shown below.
 
 ```
 labman login <username> <token>
-labman clone <source> <destination>
+labman <source> <destination>
 ```
 
-Where `token` is your GitHub [personal access token][token].  
+Where `token` is a GitHub [personal access token][token] with `repo` scope.  
 Where `source` and `destination` are GitHub repositories in the form of `owner/repo`.
 
 Here is an example.
 
 ```
 labman login bradgarropy 1234abcd
-labman clone bradgarropy/label-source bradgarropy/label-destination
+labman bradgarropy/label-source bradgarropy/label-destination
 ```
 
 Alternatively, you can run it with [`npx`][npx].
 
 ```
 npx labman login <username> <token>
-npx labman clone <source> <destination>
+npx labman <source> <destination>
 ```
 
 ## ❔ Questions

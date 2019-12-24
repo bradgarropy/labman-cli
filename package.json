@@ -1,6 +1,6 @@
 {
     "name": "labman",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "👨🏼‍🔬 github label manager cli",
     "keywords": [
         "github",
@@ -22,14 +22,14 @@
         "url": "https://bradgarropy.com"
     },
     "bin": {
-        "labman": "src/cli.js"
+        "labman": "src/cli/index.js"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/bradgarropy/labman-cli"
     },
     "scripts": {
-        "start": "node src/cli.js"
+        "start": "node src/cli/index.js"
     },
     "dependencies": {
         "@octokit/rest": "^16.35.2",
