@@ -53,9 +53,7 @@ const createLabels = async (labels, owner, repo) => {
 
     const octokit = getOctokit()
 
-    labels.forEach(label => {
-        console.log(` ${chalk.bold.greenBright("+")} ${label.name}`)
-
+    labels.forEach(async label => {
         const parameters = {
             owner,
             repo,
@@ -64,7 +62,36 @@ const createLabels = async (labels, owner, repo) => {
             description: label.description,
         }
 
-        octokit.issues.createLabel(parameters)
+        try {
+            await octokit.issues.createLabel(parameters)
+            console.log(` ${chalk.bold.greenBright("+")} ${label.name}`)
+        } catch (error) {
+            const {status} = error
+
+            switch (status) {
+                case 404:
+                    console.log(
+                        `${chalk.bold.redBright(
+                            ` x Repository ${chalk.bold.cyanBright(
+                                `${owner}/${repo}`,
+                            )} does not exist!\n`,
+                        )}`,
+                    )
+
+                    process.exit()
+                    break
+
+                case 422:
+                    console.log(
+                        `${chalk.bold.redBright(
+                            ` x Label ${chalk.bold.cyanBright(
+                                label.name,
+                            )} already exists!`,
+                        )}`,
+                    )
+                    break
+            }
+        }
     })
 }
 
