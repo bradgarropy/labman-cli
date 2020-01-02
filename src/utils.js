@@ -1,3 +1,5 @@
+const conf = require("conf")
+
 const repoPath = object => {
     const {owner, repo} = object
     const path = `${owner}/${repo}`
@@ -16,4 +18,16 @@ const repoObject = string => {
     return object
 }
 
-module.exports = {repoPath, repoObject}
+const repoAutocomplete = repo => {
+    if (repo.includes("/")) {
+        return repo
+    }
+
+    const config = new conf()
+    const owner = config.get("username")
+
+    const autocompleted = `${owner}/${repo}`
+    return autocompleted
+}
+
+module.exports = {repoPath, repoObject, repoAutocomplete}
