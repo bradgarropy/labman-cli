@@ -32,7 +32,8 @@
         "url": "https://github.com/bradgarropy/labman-cli"
     },
     "scripts": {
-        "start": "node src/cli/index.js"
+        "start": "node src/cli/index.js",
+        "test": "jest --passWithNoTests"
     },
     "dependencies": {
         "@octokit/rest": "^16.36.0",
