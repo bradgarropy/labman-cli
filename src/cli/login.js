@@ -1,6 +1,7 @@
 const conf = require("conf")
 const chalk = require("chalk")
 const {validToken} = require("../github")
+const {errorLoginFailed} = require("../errors")
 
 const config = new conf()
 
@@ -21,19 +22,22 @@ const handler = async argv => {
     const storedToken = config.get("token")
 
     if (!force && storedToken) {
-        console.log("\nYou are already logged in!\n")
+        console.log()
+        console.log("You are already logged in!")
         return
     }
 
     const valid = await validToken(token)
 
     if (!valid) {
-        console.log(`\n${chalk.redBright("Login failed!")} Please try again.\n`)
+        errorLoginFailed()
         return
     }
 
     config.set({username, token})
-    console.log(chalk.greenBright("\nLogin successful!\n"))
+
+    console.log()
+    console.log(chalk.greenBright("Login successful!"))
 
     return
 }
