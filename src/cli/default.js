@@ -1,4 +1,5 @@
 const conf = require("conf")
+const {repoAutocomplete} = require("../utils")
 const {
     errorTokenNotFound,
     errorInvalidToken,
@@ -28,7 +29,6 @@ const builder = {
 }
 
 const handler = async argv => {
-    const {source, destination, labels, clobber} = argv
     const token = config.get("token")
 
     // validate token
@@ -44,6 +44,9 @@ const handler = async argv => {
         errorInvalidToken()
         return
     }
+
+    const source = repoAutocomplete(argv.source)
+    const destination = repoAutocomplete(argv.destination)
 
     const isValidSource = await validRepo(source)
 
@@ -62,6 +65,7 @@ const handler = async argv => {
     }
 
     createOctokit(token)
+    const {labels, clobber} = argv
 
     // delete existing labels
     if (clobber) {
