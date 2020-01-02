@@ -1,32 +1,7 @@
 const chalk = require("chalk")
-const {repoObject} = require("./utils")
-const {createOctokit, getOctokit} = require("./octokit")
-const {errorRepoNotFound, errorLabelExists} = require("./errors")
-
-const validToken = async token => {
-    const octokit = createOctokit(token)
-
-    try {
-        await octokit.users.getAuthenticated()
-    } catch (error) {
-        return false
-    }
-
-    return true
-}
-
-const validRepo = async repo => {
-    const octokit = getOctokit()
-    const parameters = repoObject(repo)
-
-    try {
-        await octokit.repos.get(parameters)
-    } catch (error) {
-        return false
-    }
-
-    return true
-}
+const {repoObject} = require("../utils")
+const {getOctokit} = require("./octokit")
+const {errorRepoNotFound, errorLabelExists} = require("../errors")
 
 const getLabels = async repo => {
     const octokit = getOctokit()
@@ -96,8 +71,6 @@ const createLabels = async (labels, repo) => {
 }
 
 module.exports = {
-    validToken,
-    validRepo,
     getLabels,
     deleteLabels,
     createLabels,

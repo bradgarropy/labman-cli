@@ -1,11 +1,11 @@
 const conf = require("conf")
-const {createOctokit} = require("../octokit")
 const {
     errorTokenNotFound,
     errorInvalidToken,
     errorRepoNotFound,
 } = require("../errors")
 const {
+    createOctokit,
     validToken,
     validRepo,
     getLabels,
