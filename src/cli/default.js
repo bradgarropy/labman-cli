@@ -1,12 +1,17 @@
 const conf = require("conf")
-const copy = require("../copy")
 const {createOctokit} = require("../octokit")
-const {validToken, validRepo} = require("../github")
 const {
     errorTokenNotFound,
     errorInvalidToken,
     errorRepoNotFound,
 } = require("../errors")
+const {
+    validToken,
+    validRepo,
+    getLabels,
+    deleteLabels,
+    createLabels,
+} = require("../github")
 
 const config = new conf()
 
@@ -57,7 +62,22 @@ const handler = async argv => {
     }
 
     createOctokit(token)
-    await copy(source, destination, labels, clobber)
+
+    // delete existing labels
+    if (clobber) {
+        const oldLabels = await getLabels(destination)
+        await deleteLabels(oldLabels, destination)
+    }
+
+    // get new labels
+    const sourceLabels = await getLabels(source)
+
+    const newLabels = labels.length
+        ? sourceLabels.filter(label => labels.includes(label.name))
+        : sourceLabels
+
+    // create new labels
+    await createLabels(newLabels, destination)
 }
 
 module.exports = {
