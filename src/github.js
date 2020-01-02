@@ -1,5 +1,7 @@
 const chalk = require("chalk")
+const {repoPath, repoObject} = require("./utils")
 const {createOctokit, getOctokit} = require("./octokit")
+const {errorRepoNotFound, errorLabelExists} = require("./errors")
 
 const validToken = async token => {
     const octokit = createOctokit(token)
@@ -13,82 +15,80 @@ const validToken = async token => {
     return true
 }
 
-const getLabels = async (owner, repo) => {
-    const parameters = {
-        owner,
-        repo,
+const validRepo = async repo => {
+    const octokit = getOctokit()
+    const parameters = repoObject(repo)
+
+    try {
+        await octokit.repos.get(parameters)
+    } catch (error) {
+        return false
     }
 
+    return true
+}
+
+const getLabels = async repo => {
     const octokit = getOctokit()
+
+    const parameters = repoObject(repo)
     const response = await octokit.issues.listLabelsForRepo(parameters)
 
     const labels = response.data
     return labels
 }
 
-const deleteLabels = async (labels, owner, repo) => {
-    console.log(
-        `\nDeleting labels from ${chalk.cyanBright(`${owner}/${repo}`)}\n`,
-    )
+const deleteLabels = async (labels, repo) => {
+    console.log()
+    console.log(`Deleting labels from ${chalk.cyanBright(repo)}`)
+    console.log()
 
     const octokit = getOctokit()
 
     labels.forEach(label => {
-        console.log(` ${chalk.bold.redBright("-")} ${label.name}`)
+        const {name} = label
+        console.log(` ${chalk.bold.redBright("-")} ${name}`)
 
         const parameters = {
-            owner,
-            repo,
-            name: label.name,
+            ...repoObject(repo),
+            name,
         }
 
         octokit.issues.deleteLabel(parameters)
     })
 }
 
-const createLabels = async (labels, owner, repo) => {
-    console.log(
-        `\nCreating labels in ${chalk.cyanBright(`${owner}/${repo}`)}\n`,
-    )
+const createLabels = async (labels, repo) => {
+    console.log()
+    console.log(`Creating labels in ${chalk.cyanBright(repo)}`)
+    console.log()
 
     const octokit = getOctokit()
 
     labels.forEach(async label => {
+        const {name, color, description} = label
+
         const parameters = {
-            owner,
-            repo,
-            name: label.name,
-            color: label.color,
-            description: label.description,
+            ...repoObject(repo),
+            name,
+            color,
+            description,
         }
 
         try {
             await octokit.issues.createLabel(parameters)
-            console.log(` ${chalk.bold.greenBright("+")} ${label.name}`)
+            console.log(` ${chalk.bold.greenBright("+")} ${name}`)
         } catch (error) {
             const {status} = error
 
             switch (status) {
                 case 404:
-                    console.log(
-                        `${chalk.bold.redBright(
-                            ` x Repository ${chalk.bold.cyanBright(
-                                `${owner}/${repo}`,
-                            )} does not exist!\n`,
-                        )}`,
-                    )
-
+                    errorRepoNotFound(repo)
                     process.exit()
                     break
 
                 case 422:
-                    console.log(
-                        `${chalk.bold.redBright(
-                            ` x Label ${chalk.bold.cyanBright(
-                                label.name,
-                            )} already exists!`,
-                        )}`,
-                    )
+                    errorLabelExists(name)
                     break
             }
         }
@@ -97,6 +97,7 @@ const createLabels = async (labels, owner, repo) => {
 
 module.exports = {
     validToken,
+    validRepo,
     getLabels,
     deleteLabels,
     createLabels,

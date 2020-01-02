@@ -9,7 +9,9 @@ const builder = {}
 
 const handler = () => {
     config.clear()
-    console.log(chalk.greenBright("\nLogout successful!\n"))
+
+    console.log()
+    console.log(chalk.greenBright("Logout successful!"))
 
     return
 }

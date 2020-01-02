@@ -1,7 +1,12 @@
 const conf = require("conf")
-const chalk = require("chalk")
 const copy = require("../copy")
 const {createOctokit} = require("../octokit")
+const {validToken, validRepo} = require("../github")
+const {
+    errorTokenNotFound,
+    errorInvalidToken,
+    errorRepoNotFound,
+} = require("../errors")
 
 const config = new conf()
 
@@ -21,29 +26,38 @@ const handler = async argv => {
     const {source, destination, labels, clobber} = argv
     const token = config.get("token")
 
+    // validate token
     if (!token) {
-        console.log(
-            `\nYou are not logged in, please run the ${chalk.cyanBright(
-                "login",
-            )} command.\n`,
-        )
+        errorTokenNotFound()
+        return
+    }
 
-        console.log(chalk.cyanBright("labman login <username> <token>\n"))
+    const isValidToken = await validToken(token)
+
+    // validate token
+    if (!isValidToken) {
+        errorInvalidToken()
+        return
+    }
+
+    const isValidSource = await validRepo(source)
+
+    // validate source
+    if (!isValidSource) {
+        errorRepoNotFound(source)
+        return
+    }
+
+    const isValidDestination = await validRepo(destination)
+
+    // validate destination
+    if (!isValidDestination) {
+        errorRepoNotFound(destination)
         return
     }
 
     createOctokit(token)
-
-    try {
-        await copy(source, destination, labels, clobber)
-    } catch (error) {
-        console.log(
-            `\n${chalk.redBright(
-                "Invalid token!",
-            )} Please run the ${chalk.cyanBright("login")} command again.\n`,
-        )
-        console.log(chalk.cyanBright("labman login <username> <token>\n"))
-    }
+    await copy(source, destination, labels, clobber)
 }
 
 module.exports = {
