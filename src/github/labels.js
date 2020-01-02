@@ -54,18 +54,7 @@ const createLabels = async (labels, repo) => {
             await octokit.issues.createLabel(parameters)
             console.log(` ${chalk.bold.greenBright("+")} ${name}`)
         } catch (error) {
-            const {status} = error
-
-            switch (status) {
-                case 404:
-                    errorRepoNotFound(repo)
-                    process.exit()
-                    break
-
-                case 422:
-                    errorLabelExists(name)
-                    break
-            }
+            errorLabelExists(name)
         }
     })
 }
