@@ -1,5 +1,5 @@
 const chalk = require("chalk")
-const {repoPath, repoObject} = require("./utils")
+const {repoObject} = require("./utils")
 const {createOctokit, getOctokit} = require("./octokit")
 const {errorRepoNotFound, errorLabelExists} = require("./errors")
 
