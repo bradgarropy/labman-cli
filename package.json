@@ -1,6 +1,6 @@
 {
     "name": "labman",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "description": "👨🏼‍🔬 github label manager cli",
     "keywords": [
         "github",
@@ -11,7 +11,7 @@
         "nodejs",
         "cli"
     ],
-    "homepage": "https://labman.netlify.com",
+    "homepage": "https://npmjs.com/package/labman",
     "bugs": {
         "url": "https://github.com/bradgarropy/labman-cli/issues"
     },
