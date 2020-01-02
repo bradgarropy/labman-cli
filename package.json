@@ -21,6 +21,9 @@
         "email": "bradgarropy@gmail.com",
         "url": "https://bradgarropy.com"
     },
+    "files": [
+        "src"
+    ],
     "bin": {
         "labman": "src/cli/index.js"
     },
