@@ -35,7 +35,7 @@
         "@octokit/rest": "^16.36.0",
         "chalk": "^3.0.0",
         "conf": "^6.2.0",
-        "yargs": "^15.0.2"
+        "yargs": "^15.1.0"
     },
     "devDependencies": {
         "babel-eslint": "^10.0.3",
