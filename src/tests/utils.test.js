@@ -1,4 +1,7 @@
-const {repoPath, repoObject} = require("../utils")
+const conf = require("conf")
+const {repoPath, repoObject, repoAutocomplete} = require("../utils")
+
+const config = new conf()
 
 describe("repo path", () => {
     test("object", () => {
@@ -82,6 +85,20 @@ describe("repo object", () => {
 })
 
 describe("repo autocomplete", () => {
-    test("with owner", () => {})
-    test("without owner", () => {})
+    const stored = {
+        username: "bradgarropy",
+        token: "123456",
+    }
+
+    config.set(stored)
+
+    test("with owner", () => {
+        const repo = repoAutocomplete("bradgarropy/labman-cli")
+        expect(repo).toEqual("bradgarropy/labman-cli")
+    })
+
+    test("without owner", () => {
+        const repo = repoAutocomplete("labman-cli")
+        expect(repo).toEqual("bradgarropy/labman-cli")
+    })
 })
