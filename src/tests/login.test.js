@@ -7,10 +7,7 @@ const {handler: logoutHandler} = require("../cli/logout")
 jest.mock("../errors")
 jest.mock("../github")
 
-beforeEach(() => {
-    logoutHandler()
-    jest.clearAllMocks()
-})
+beforeEach(() => logoutHandler())
 
 const config = new conf()
 
