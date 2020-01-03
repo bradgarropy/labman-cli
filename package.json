@@ -33,7 +33,8 @@
     },
     "scripts": {
         "start": "node src/cli/index.js",
-        "test": "jest --passWithNoTests"
+        "dev": "jest --watch --passWithNoTests --verbose",
+        "test": "jest --passWithNoTests --verbose"
     },
     "dependencies": {
         "@octokit/rest": "^16.36.0",
