@@ -1,7 +1,5 @@
 const {repoPath, repoObject} = require("../utils")
 
-jest.mock("conf")
-
 describe("repo path", () => {
     test("object", () => {
         const object = {
