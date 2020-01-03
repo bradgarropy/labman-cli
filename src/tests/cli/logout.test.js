@@ -1,5 +1,5 @@
 const conf = require("conf")
-const {handler} = require("../cli/logout")
+const {handler} = require("../../cli/logout")
 
 const config = new conf()
 

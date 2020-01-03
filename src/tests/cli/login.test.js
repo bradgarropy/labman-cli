@@ -1,11 +1,11 @@
 const conf = require("conf")
-const {validToken} = require("../github")
-const {errorLoginFailed} = require("../errors")
-const {handler: loginHandler} = require("../cli/login")
-const {handler: logoutHandler} = require("../cli/logout")
+const {validToken} = require("../../github")
+const {errorLoginFailed} = require("../../errors")
+const {handler: loginHandler} = require("../../cli/login")
+const {handler: logoutHandler} = require("../../cli/logout")
 
-jest.mock("../errors")
-jest.mock("../github")
+jest.mock("../../errors")
+jest.mock("../../github")
 
 beforeEach(() => logoutHandler())
 
