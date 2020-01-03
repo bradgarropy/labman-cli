@@ -23,8 +23,8 @@ describe("login", () => {
 
         await loginHandler(args)
 
-        expect(validToken.mock.calls.length).toEqual(1)
-        expect(errorLoginFailed.mock.calls.length).toEqual(0)
+        expect(validToken).toHaveBeenCalled()
+        expect(errorLoginFailed).not.toHaveBeenCalled()
         expect(config.get("username")).toEqual(args.username)
         expect(config.get("token")).toEqual(args.token)
     })
@@ -40,8 +40,8 @@ describe("login", () => {
 
         await loginHandler(args)
 
-        expect(validToken.mock.calls.length).toEqual(1)
-        expect(errorLoginFailed.mock.calls.length).toEqual(1)
+        expect(validToken).toHaveBeenCalled()
+        expect(errorLoginFailed).toHaveBeenCalled()
         expect(config.get("username")).toBeUndefined()
         expect(config.get("token")).toBeUndefined()
     })
@@ -62,8 +62,8 @@ describe("login", () => {
 
         await loginHandler(args)
 
-        expect(validToken.mock.calls.length).toEqual(0)
-        expect(errorLoginFailed.mock.calls.length).toEqual(0)
+        expect(validToken).not.toHaveBeenCalled()
+        expect(errorLoginFailed).not.toHaveBeenCalled()
         expect(config.get("username")).toEqual(stored.username)
         expect(config.get("token")).toEqual(stored.token)
     })
@@ -86,8 +86,8 @@ describe("login", () => {
 
         await loginHandler(args)
 
-        expect(validToken.mock.calls.length).toEqual(1)
-        expect(errorLoginFailed.mock.calls.length).toEqual(0)
+        expect(validToken).toHaveBeenCalled()
+        expect(errorLoginFailed).not.toHaveBeenCalled()
         expect(config.get("username")).toEqual(args.username)
         expect(config.get("token")).toEqual(args.token)
     })
