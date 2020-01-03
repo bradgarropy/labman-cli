@@ -27,9 +27,9 @@ const errorLoginFailed = () => {
 }
 
 const errorRepoNotFound = repo => {
-    const repoText = chalk.bold.cyanBright(repo)
+    const repoText = repo ? chalk.bold.cyanBright(` ${repo} `) : " "
     const errorText = chalk.bold.redBright(
-        `Repository ${repoText} does not exist!`,
+        `Repository${repoText}does not exist!`,
     )
 
     console.log()
@@ -37,9 +37,9 @@ const errorRepoNotFound = repo => {
 }
 
 const errorLabelExists = label => {
-    const labelText = chalk.bold.cyanBright(label)
+    const labelText = label ? chalk.bold.cyanBright(` ${label} `) : " "
     const errorText = chalk.bold.redBright(
-        ` x Label ${labelText} already exists!`,
+        ` x Label${labelText}already exists!`,
     )
 
     console.log(errorText)
