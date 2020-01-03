@@ -42,8 +42,8 @@ describe("login", () => {
 
         expect(validToken.mock.calls.length).toEqual(1)
         expect(errorLoginFailed.mock.calls.length).toEqual(1)
-        expect(config.get("username")).toEqual(undefined)
-        expect(config.get("token")).toEqual(undefined)
+        expect(config.get("username")).toBeUndefined()
+        expect(config.get("token")).toBeUndefined()
     })
 
     test("existing token", async () => {
