@@ -1,0 +1,17 @@
+# editor
+.vscode
+.eslintrc
+.prettierrc
+
+# dependencies
+node_modules
+
+# secrets
+.env*
+
+# build
+.github
+
+# test
+src/tests
+jest.config.js
