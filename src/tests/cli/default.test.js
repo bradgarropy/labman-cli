@@ -80,9 +80,9 @@ describe("default", () => {
         expect(validRepo).toHaveBeenCalledWith("bradgarropy/label-destination")
     })
 
-    test("repo not found", async () => {
+    test("invalid source", async () => {
         validToken.mockImplementation(() => true)
-        validRepo.mockImplementation(() => false)
+        validRepo.mockImplementationOnce(() => false)
 
         const stored = {
             username: "bradgarropy",
@@ -93,7 +93,7 @@ describe("default", () => {
 
         const args = {
             source: "bradgarropy/invalid-source",
-            destination: "bradgarropy/invalid-destination",
+            destination: "bradgarropy/label-destination",
             labels: [],
             clobber: false,
         }
@@ -102,6 +102,33 @@ describe("default", () => {
 
         expect(validRepo).toHaveBeenCalledTimes(1)
         expect(validRepo).toHaveBeenCalledWith(args.source)
+        expect(errorRepoNotFound).toHaveBeenCalledTimes(1)
+    })
+
+    test("invalid destination", async () => {
+        validToken.mockImplementation(() => true)
+        validRepo
+            .mockImplementationOnce(() => true)
+            .mockImplementationOnce(() => false)
+
+        const stored = {
+            username: "bradgarropy",
+            token: "123456",
+        }
+
+        config.set(stored)
+
+        const args = {
+            source: "bradgarropy/label-source",
+            destination: "bradgarropy/invalid-destination",
+            labels: [],
+            clobber: false,
+        }
+
+        await defaultHandler(args)
+
+        expect(validRepo).toHaveBeenCalledTimes(2)
+        expect(validRepo).toHaveBeenNthCalledWith(2, args.destination)
         expect(errorRepoNotFound).toHaveBeenCalledTimes(1)
     })
 
