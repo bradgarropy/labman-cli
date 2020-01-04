@@ -2,13 +2,24 @@ const conf = require("conf")
 
 const repoPath = object => {
     const {owner, repo} = object
-    const path = `${owner}/${repo}`
 
+    if (!owner || !repo) {
+        return ""
+    }
+
+    const path = `${owner}/${repo}`
     return path
 }
 
 const repoObject = string => {
     const [owner, repo] = string.split("/")
+
+    if (!owner || !repo) {
+        return {
+            owner: "",
+            repo: "",
+        }
+    }
 
     const object = {
         owner,
