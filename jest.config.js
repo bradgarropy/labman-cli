@@ -1,4 +1,6 @@
 const config = {
+    collectCoverage: true,
+    coverageReporters: ["text"],
     clearMocks: true,
     verbose: true,
 }
