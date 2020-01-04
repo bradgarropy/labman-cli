@@ -19,25 +19,100 @@ npm install labman --global
 If you have `labman` installed globally you can run it as shown below.
 
 ```
-labman login <username> <token>
-labman <source> <destination>
-```
-
-Where `token` is a GitHub [personal access token][token] with `repo` scope.  
-Where `source` and `destination` are GitHub repositories in the form of `owner/repo`.
-
-Here is an example.
-
-```
-labman login bradgarropy 1234abcd
-labman bradgarropy/label-source bradgarropy/label-destination
+labman --help
 ```
 
 Alternatively, you can run it with [`npx`][npx].
 
 ```
-npx labman login <username> <token>
-npx labman <source> <destination>
+npx labman --help
+```
+
+## 👨🏼‍🏫 Commands
+
+### `login`
+
+Validates and stores your GitHub [personal access token][token].
+
+#### Options
+
+| Name            | Description                                              | Default |
+| --------------- | -------------------------------------------------------- | ------- |
+| `username`      | GitHub username.                                         |         |
+| `token`         | GitHub [personal access token][token] with `repo` scope. |         |
+| `--force`, `-f` | Overwrite existing login.                                | `false` |
+
+#### Examples
+
+Login as `bradgarropy` with a [personal access token][token].
+
+```
+labman login bradgarropy 123456
+```
+
+Login as `gabygarropy`, overwriting the `bradgarropy` login.
+
+```
+labman login gabygarropy 456789
+```
+
+### `default`
+
+Copies labels from one repository to another.
+
+The `source` and `destination` can be provided in two ways.
+
+-   `owner/repo`, like `bradgarropy/labman-cli`
+-   `repo`, like `labman-cli`
+
+If an `owner` is not specified, `labman` will assume the `username` you provided during `login`.
+
+If `labels` is not provided, `labman` will copy all labels from `source` to `destination`.
+
+#### Options
+
+| Name              | Description                                                          | Default |
+| ----------------- | -------------------------------------------------------------------- | ------- |
+| `source`          | GitHub repository.                                                   |         |
+| `destination`     | GitHub repository.                                                   |         |
+| `labels`          | Space separated list of label names to copy.                         | `[]`    |
+| `--clobber`, `-c` | Remove all labels from `destination` before copying `source` labels. | `false` |
+
+#### Examples
+
+Copy all labels from `bradgarropy/label-source` to `bradgarropy/label-destination`.
+
+```
+labman bradgarropy/label-source bradgarropy/label-destination
+```
+
+Delete all labels from `bradgarropy/label-destionation`, then copy all labels from `bradgarropy/label-source` to `bradgarropy/label-destination`.
+
+```
+labman bradgarropy/label-source bradgarropy/label-destination --clobber
+```
+
+Copy only the `bug` and `todo` labels from `bradgarropy/label-source` to `bradgarropy/label-destination`.
+
+```
+labman bradgarropy/label-source bradgarropy/label-destination bug todo
+```
+
+Use the shorthand method for providing `source` and `destination` repositories.
+
+```
+labman login bradgarropy 123456
+labman label-source label-destination
+```
+
+### `logout`
+
+Removes your GitHub [personal access token][token].
+
+#### Examples
+
+```
+labman logout
 ```
 
 ## ❔ Questions
