@@ -22,7 +22,7 @@ const handler = async argv => {
     const storedToken = config.get("token")
 
     if (!force && storedToken) {
-        console.log()
+        console.log("")
         console.log("You are already logged in!")
         return
     }
@@ -36,7 +36,7 @@ const handler = async argv => {
 
     config.set({username, token})
 
-    console.log()
+    console.log("")
     console.log(chalk.greenBright("Login successful!"))
 
     return

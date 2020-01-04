@@ -14,39 +14,39 @@ Array [
 
 exports[`login  failed 1`] = `
 Array [
-  undefined,
+  "",
   "[91mLogin failed![39m Please try again.",
 ]
 `;
 
 exports[`repo not found with string 1`] = `
 Array [
-  undefined,
+  "",
   "[1m[91mRepository[1m[96m bradgarropy/labman-cli [39m[91m[22m[1mdoes not exist![39m[22m",
 ]
 `;
 
 exports[`repo not found without string 1`] = `
 Array [
-  undefined,
+  "",
   "[1m[91mRepository does not exist![39m[22m",
 ]
 `;
 
 exports[`token invalid 1`] = `
 Array [
-  undefined,
+  "",
   "[91mInvalid token![39m Please run the [96mlogin[39m command again.",
-  undefined,
+  "",
   "[96mlabman login <username> <token>[39m",
 ]
 `;
 
 exports[`token not found 1`] = `
 Array [
-  undefined,
+  "",
   "You are not logged in, please run the [96mlogin[39m command.",
-  undefined,
+  "",
   "[96mlabman login <username> <token>[39m",
 ]
 `;

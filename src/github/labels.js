@@ -1,7 +1,7 @@
 const chalk = require("chalk")
 const {repoObject} = require("../utils")
 const {getOctokit} = require("./octokit")
-const {errorRepoNotFound, errorLabelExists} = require("../errors")
+const {errorLabelExists} = require("../errors")
 
 const getLabels = async repo => {
     const octokit = getOctokit()
@@ -14,9 +14,9 @@ const getLabels = async repo => {
 }
 
 const deleteLabels = async (labels, repo) => {
-    console.log()
+    console.log("")
     console.log(`Deleting labels from ${chalk.cyanBright(repo)}`)
-    console.log()
+    console.log("")
 
     const octokit = getOctokit()
 
@@ -34,9 +34,9 @@ const deleteLabels = async (labels, repo) => {
 }
 
 const createLabels = async (labels, repo) => {
-    console.log()
+    console.log("")
     console.log(`Creating labels in ${chalk.cyanBright(repo)}`)
-    console.log()
+    console.log("")
 
     const octokit = getOctokit()
 
