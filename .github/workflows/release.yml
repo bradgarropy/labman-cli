@@ -23,7 +23,7 @@ jobs:
             - name: "👖 coveralls"
               uses: coverallsapp/github-action@v1.0.1
               with:
-                  github-token: ${{ secrets.COVERALLS_TOKEN }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
             - name: "🚀 publish"
               run: npm publish
               env:
