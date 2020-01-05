@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "🛠 build"
-              uses: .github/actions/build
+              uses: ./.github/actions/build
             - name: "🚀 publish"
               run: npm publish
               env:
