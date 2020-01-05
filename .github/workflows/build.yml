@@ -1,0 +1,31 @@
+name: "🛠 build"
+
+on:
+    push:
+        branches:
+            - *
+
+jobs:
+    build:
+        name: "🛠 build"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "📚 checkout"
+              uses: actions/checkout@v2.0.0
+            - name: "🟢 node"
+              uses: actions/setup-node@v1.1.0
+              with:
+                  node-version: 13
+                  registry-url: https://registry.npmjs.org/
+            - name: "📦 install"
+              run: npm install
+            - name: "🧪 test"
+              run: npm run test
+            - name: "👖 coveralls"
+              uses: coverallsapp/github-action@v1.0.1
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+            - name: "🚀 publish"
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
