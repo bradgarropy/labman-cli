@@ -25,7 +25,3 @@ jobs:
               uses: coverallsapp/github-action@v1.0.1
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
-            - name: "🚀 publish"
-              run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
