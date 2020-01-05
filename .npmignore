@@ -12,6 +12,7 @@ node_modules
 # build
 .github
 
-# test
+# tests
 src/tests
 jest.config.js
+coverage

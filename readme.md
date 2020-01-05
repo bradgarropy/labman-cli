@@ -4,6 +4,10 @@
     <img alt="npm" src="https://img.shields.io/npm/v/labman.svg?color=FB3B49&style=flat-square">
 </a>
 
+<a href="https://coveralls.io/github/bradgarropy/labman-cli">
+    <img alt="coveralls" src="https://img.shields.io/coveralls/github/bradgarropy/labman-cli?style=flat-square">
+</a>
+
 _Command line tool for managing issue labels across GitHub repositories._
 
 ## 📦 Installation
