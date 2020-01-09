@@ -4,6 +4,10 @@
     <img alt="npm" src="https://img.shields.io/npm/v/labman.svg?color=FB3B49&style=flat-square">
 </a>
 
+<a href="https://www.npmjs.com/package/labman">
+    <img alt="npm" src="https://img.shields.io/npm/dt/labman?style=flat-square">
+</a>
+
 <a href="https://coveralls.io/github/bradgarropy/labman-cli">
     <img alt="coveralls" src="https://img.shields.io/coveralls/github/bradgarropy/labman-cli?style=flat-square">
 </a>
@@ -60,7 +64,7 @@ Login as `gabygarropy`, overwriting the `bradgarropy` login.
 labman login gabygarropy 456789
 ```
 
-### `default`
+### `labman`
 
 Copies labels from one repository to another.
 
