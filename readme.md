@@ -1,7 +1,7 @@
 # 👨🏼‍🔬 github label manager cli
 
 <a href="https://www.npmjs.com/package/labman">
-    <img alt="npm" src="https://img.shields.io/npm/v/labman.svg?color=FB3B49&style=flat-square">
+    <img alt="npm" src="https://img.shields.io/npm/v/labman.svg?style=flat-square">
 </a>
 
 <a href="https://www.npmjs.com/package/labman">
