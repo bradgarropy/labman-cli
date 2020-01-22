@@ -1,4 +1,4 @@
-const conf = require("conf")
+const config = require("./config")
 
 const repoPath = object => {
     const {owner, repo} = object
@@ -34,7 +34,6 @@ const repoAutocomplete = repo => {
         return repo
     }
 
-    const config = new conf()
     const owner = config.get("username")
 
     const autocompleted = `${owner}/${repo}`

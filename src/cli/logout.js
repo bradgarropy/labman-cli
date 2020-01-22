@@ -1,7 +1,5 @@
-const conf = require("conf")
 const chalk = require("chalk")
-
-const config = new conf()
+const config = require("../config")
 
 const command = "logout"
 const description = "Remove GitHub credentials"
