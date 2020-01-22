@@ -1,4 +1,4 @@
-const conf = require("conf")
+const config = require("../../config")
 const {handler: logoutHandler} = require("../../cli/logout")
 const {handler: defaultHandler} = require("../../cli/default")
 const {
@@ -18,8 +18,6 @@ jest.mock("../../errors")
 jest.mock("../../github")
 
 beforeEach(() => logoutHandler())
-
-const config = new conf()
 
 describe("default", () => {
     test("token not found", async () => {

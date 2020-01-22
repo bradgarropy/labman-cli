@@ -1,4 +1,4 @@
-const conf = require("conf")
+const config = require("../config")
 const {repoAutocomplete} = require("../utils")
 const {
     errorTokenNotFound,
@@ -13,8 +13,6 @@ const {
     deleteLabels,
     createLabels,
 } = require("../github")
-
-const config = new conf()
 
 const command = "* <source> <destination> [labels...]"
 const description = "Copy issue labels from one repo to another"
