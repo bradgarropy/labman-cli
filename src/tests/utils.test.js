@@ -1,7 +1,5 @@
-const conf = require("conf")
+const config = require("../config")
 const {repoPath, repoObject, repoAutocomplete} = require("../utils")
-
-const config = new conf()
 
 describe("repo path", () => {
     test("object", () => {

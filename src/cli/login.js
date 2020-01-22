@@ -1,9 +1,7 @@
-const conf = require("conf")
 const chalk = require("chalk")
+const config = require("../config")
 const {validToken} = require("../github")
 const {errorLoginFailed} = require("../errors")
-
-const config = new conf()
 
 const command = "login <username> <token>"
 const description = "Persist GitHub credentials"
