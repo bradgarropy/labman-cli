@@ -131,7 +131,7 @@ If you have any trouble, definitely [open an issue][issue] and I'll take a look.
 
 If all else fails, you can ask me directly on [Twitter][twitter] or my [AMA][ama].
 
-[gif]: https://raw.githubusercontent.com/bradgarropy/labman-cli/launch/usage.gif
+[gif]: https://raw.githubusercontent.com/bradgarropy/labman-cli/master/usage.gif
 [npx]: https://www.npmjs.com/package/npx
 [token]: https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 [issue]: https://github.com/bradgarropy/labman-cli/issues
