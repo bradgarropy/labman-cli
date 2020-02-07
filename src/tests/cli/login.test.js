@@ -1,4 +1,4 @@
-const conf = require("conf")
+const config = require("../../config")
 const {validToken} = require("../../github")
 const {errorLoginFailed} = require("../../errors")
 const {handler: loginHandler} = require("../../cli/login")
@@ -8,8 +8,6 @@ jest.mock("../../errors")
 jest.mock("../../github")
 
 beforeEach(() => logoutHandler())
-
-const config = new conf()
 
 describe("login", () => {
     test("valid token", async () => {
